@@ -1,0 +1,40 @@
+# Create a nginx deployment with 3 replicas, nginx image 1.7.9, with label app=nginx and container port as 80 and record it
+
+kubectl run nginx-deployment --image=nginx:1.7.9 --replicas=3 --labels=app=nginx --port=80 --record
+
+# View the deployment yaml using below command
+
+kubectl get deploy nginx-deployment -o yaml
+
+# Check the deployment rollout status 
+
+kubectl rollout status deployment/nginx-deployment
+
+# To see the replica set created by the deployment
+
+kubectl get rs
+
+# To view the labels on the pods created by deployment
+
+kubectl get po --show-labels
+
+# To update the deployment by updating the version of the container image (e.g update nginx image to 1.9.1)
+
+kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1
+
+# To check the history of the deployment
+
+kubectl rollout history deployment/nginx-deployment
+
+# To rollback deployment to a previous version
+
+kubectl rollout undo deployment/nginx-deployment 
+
+# To rollback deployment to a specific previous version (e.g version 2)
+
+kubectl rollout undo deployment/nginx-deployment --to-revision=2
+
+# To scale a deployment by increasing number of replicas (eg. to 5)
+
+kubectl scale deployment nginx-deployment --replicas=5
+
