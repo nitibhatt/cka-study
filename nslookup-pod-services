@@ -1,0 +1,7 @@
+# To do nslookup for a service, do the following:
+
+kubectl run -it busybox --image=busybox --restart=Never -- nslookup svc-name.default.svc.cluster.local  
+
+# To do nslookup for a pod, do the following:
+
+kubectl run -it busybox --image=busybox --restart=Never -- nslookup podIp.default.pod.cluster.local, where podIp format is xx-xx-xx-xx
