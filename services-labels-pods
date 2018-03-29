@@ -1,0 +1,15 @@
+# To list pods with specific labels, use below:
+
+kubectl get po -l <key>=<value>
+
+# To list all pods in a namespace with their respective labels, use below:
+
+kubectl get po --show-labels
+
+# To list all services in a namespace with their respective labels, use below:
+
+kubectl get svc --show-labels
+
+# To identify pods by their service definition, use below
+
+kubectl get po -l <key>=<value>, where <key>=<value> would be obtained from 'kubectl get svc --show-labels'
