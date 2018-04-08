@@ -1,0 +1,21 @@
+#command to create config-map
+
+#kubectl create config-map <config_map_name> --from-literal=<KEY>=<VALUE>
+#Example YAML of a pod using a config map is below
+
+apiVersion: v1
+kind: Pod
+metadata:
+   name: config-test-pod
+spec:
+   containers:
+   - name: test-container
+     image: busybox
+     command: ["/bin/sh", "-c", "env"]
+     env:
+     - name: WHAT_SCHOOL
+       valueFrom:
+         configMapKeyRef:
+         - name: my-map
+           key: school
+    restartPolicy: Never
